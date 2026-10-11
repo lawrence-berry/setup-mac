@@ -12,5 +12,7 @@ fi
 line="eval \"\$($brew shellenv)\""
 grep -qsF "$brew shellenv" "$HOME/.zprofile" || echo "$line" >> "$HOME/.zprofile"
 
-"$brew" bundle --file="$dir/Brewfile"
-echo "done — tools installed"
+# Don't abort on a partial failure (e.g. an app not yet adopted, or App Store
+# not signed in). bundle still installs everything else; just flag it.
+"$brew" bundle --file="$dir/Brewfile" || echo "note: some Brewfile entries were skipped or failed above — see the summary"
+echo "done"
