@@ -3,7 +3,7 @@
 # Apple's Gatekeeper check, so this fetches the same build Homebrew pinned,
 # verifies it against Homebrew's sha256, installs it, and clears the quarantine
 # flag so it opens (that flag is the Gatekeeper block the disable was about).
-# Re-running replaces the app. Not run by install.sh — run it yourself.
+# install.sh runs it when Deluge is missing; run it yourself to reinstall.
 set -e
 version="1.3.15.1"
 url="https://ftp.osuosl.org/pub/deluge/mac_osx/deluge-${version}-macosx-x64.dmg"

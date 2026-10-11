@@ -36,10 +36,10 @@ brew install --cask --adopt google-chrome visual-studio-code
 
 ### Deluge
 
-Deluge's cask was disabled (its build fails Apple's Gatekeeper check), so it's not in the `Brewfile`. Install it with:
+Deluge's cask was disabled (its build fails Apple's Gatekeeper check), so it's not in the `Brewfile`. `install.sh` installs it with `deluge.sh` when it's missing; to reinstall, run:
 
 ```sh
 ./deluge.sh
 ```
 
-It fetches the build Homebrew pinned, verifies it against Homebrew's sha256, installs it, and clears the quarantine flag so it opens. Run it yourself — `install.sh` doesn't, since it bypasses Gatekeeper.
+It fetches the build Homebrew pinned, verifies it against Homebrew's sha256, installs it, and clears the quarantine flag so it opens.
