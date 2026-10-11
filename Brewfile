@@ -29,7 +29,6 @@ cask "claude"
 cask "claude-usage-tracker"
 cask "cursor"
 cask "daisydisk"
-cask "deluge"
 cask "docker"
 cask "github"                 # GitHub Desktop
 cask "google-chrome"

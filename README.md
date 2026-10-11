@@ -33,3 +33,13 @@ Lists anything you've installed via Homebrew that isn't in the `Brewfile` yet, a
 ```sh
 brew install --cask --adopt google-chrome visual-studio-code
 ```
+
+### Deluge
+
+Deluge's cask was disabled (its build fails Apple's Gatekeeper check), so it's not in the `Brewfile`. Install it with:
+
+```sh
+./deluge.sh
+```
+
+It fetches the build Homebrew pinned, verifies it against Homebrew's sha256, installs it, and clears the quarantine flag so it opens. Run it yourself — `install.sh` doesn't, since it bypasses Gatekeeper.
