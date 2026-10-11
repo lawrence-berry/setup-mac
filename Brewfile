@@ -2,11 +2,11 @@
 # right heading. Run `./refresh.sh` to list installed items missing from here.
 
 # --- Core: tools the setup-* repos depend on ---
-brew "git"       # setup-git
-brew "gh"        # wgd alias + pushing from new machines
-brew "neovim"    # $EDITOR (nvim) from setup-shell
-brew "htop"      # `health` alias
-brew "nmap"      # `alllocalips` alias
+brew "git"
+brew "gh"
+brew "neovim"
+brew "htop"
+brew "nmap"
 
 # --- CLI tools ---
 brew "automake"
@@ -48,8 +48,3 @@ cask "visual-studio-code"
 cask "vlc"
 cask "whatsapp"
 cask "wispr-flow"
-
-# --- App Store (mas) ---
-# App-Store-only app (no cask). Needs you signed into the App Store, and mas
-# can only install apps already associated with your Apple ID.
-mas "QR Pro", id: 1013912824
