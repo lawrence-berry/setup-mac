@@ -15,6 +15,7 @@ brew "coreutils"
 brew "gettext"
 brew "go"
 brew "libtool"
+brew "mas"        # installs the App Store apps listed below
 brew "node"
 brew "pkgconf"
 brew "ripgrep"
@@ -48,3 +49,11 @@ cask "viber"
 cask "visual-studio-code"
 cask "vlc"
 cask "wispr-flow"
+
+# --- App Store (mas) ---
+# Installed via `mas`; requires being signed into the App Store. You can only
+# install apps already associated with your Apple ID.
+mas "NordVPN", id: 905953485
+mas "QR Pro", id: 1013912824
+mas "Slack", id: 803453959
+mas "WhatsApp", id: 310633997
