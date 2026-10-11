@@ -14,13 +14,13 @@ brew "cloudflared"
 brew "coreutils"
 brew "gettext"
 brew "go"
-brew "libtool"
+brew "libtool"    # GNU build tool for C libraries (glibtool)
 brew "mas"        # installs the App Store apps listed below
 brew "node"
 brew "pkgconf"
 brew "ripgrep"
 brew "sevenzip"
-brew "zzz"
+brew "zzz"        # `zzz` puts the Mac to sleep
 
 # --- Apps (casks) ---
 cask "1password"
@@ -33,20 +33,17 @@ cask "docker"
 cask "github"                 # GitHub Desktop
 cask "google-chrome"
 cask "karabiner-elements"     # includes Karabiner-EventViewer
-cask "keka"
+cask "keka"                   # file archiver (zip, 7z, rar…)
 cask "libreoffice"
 cask "maccy"
 cask "macfuse"
 cask "nordvpn"
-cask "parallels"              # Parallels Desktop
 cask "pingplotter"
 cask "privadovpn"
 cask "slack"
-cask "steam"
 cask "superduper"
 cask "tailscale-app"
 cask "utm"
-cask "viber"
 cask "visual-studio-code"
 cask "vlc"
 cask "whatsapp"
