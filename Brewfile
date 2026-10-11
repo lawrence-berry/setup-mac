@@ -38,9 +38,11 @@ cask "keka"
 cask "libreoffice"
 cask "maccy"
 cask "macfuse"
+cask "nordvpn"
 cask "parallels"              # Parallels Desktop
 cask "pingplotter"
 cask "privadovpn"
+cask "slack"
 cask "steam"
 cask "superduper"
 cask "tailscale-app"
@@ -48,12 +50,10 @@ cask "utm"
 cask "viber"
 cask "visual-studio-code"
 cask "vlc"
+cask "whatsapp"
 cask "wispr-flow"
 
 # --- App Store (mas) ---
-# Installed via `mas`; requires being signed into the App Store. You can only
-# install apps already associated with your Apple ID.
-mas "NordVPN", id: 905953485
+# App-Store-only app (no cask). Needs you signed into the App Store, and mas
+# can only install apps already associated with your Apple ID.
 mas "QR Pro", id: 1013912824
-mas "Slack", id: 803453959
-mas "WhatsApp", id: 310633997
