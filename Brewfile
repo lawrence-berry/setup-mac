@@ -26,7 +26,7 @@ brew "zzz"        # `zzz` puts the Mac to sleep
 cask "1password"
 cask "brave-browser"
 cask "claude"
-cask "claude-usage-tracker"
+cask "hamed-elfayome/claude-usage/claude-usage-tracker"   # from the app's own tap; not in homebrew-cask
 cask "cursor"
 cask "daisydisk"
 cask "docker"
