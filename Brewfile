@@ -47,5 +47,7 @@ cask "trailer"
 cask "utm"
 cask "visual-studio-code"
 cask "vlc"
-cask "whatsapp"
 cask "wispr-flow"
+
+# --- App Store (needs the App Store signed in) ---
+mas "WhatsApp", id: 310633997   # installed from the App Store, so Homebrew can't adopt a cask for it
