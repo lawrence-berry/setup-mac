@@ -12,6 +12,10 @@ fi
 line="eval \"\$($brew shellenv)\""
 grep -qsF "$brew shellenv" "$HOME/.zprofile" || echo "$line" >> "$HOME/.zprofile"
 
+# Stop early on a macOS Homebrew no longer supports (no bottles: everything compiles).
+# SETUP_ALLOW_OLD_OS=1 overrides.
+sh "$dir/os-current.sh" "$brew"
+
 # Don't abort on a partial failure (e.g. an app not yet adopted, or App Store
 # not signed in). bundle still installs everything else; just flag it.
 "$brew" bundle --file="$dir/Brewfile" || echo "note: some Brewfile entries were skipped or failed above — see the summary"
