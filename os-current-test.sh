@@ -1,6 +1,6 @@
 #!/bin/sh
-# Self-test for check-os.sh, with fake brews so it passes on any macOS.
-#   sh check-os-test.sh
+# Self-test for os-current.sh, with fake brews so it passes on any macOS.
+#   sh os-current-test.sh
 set -u
 dir="$(cd "$(dirname "$0")" && pwd)"
 t="$(mktemp -d)"; trap 'rm -rf "$t"' EXIT
@@ -17,8 +17,8 @@ expect() { # description, expected exit, command...
   "$@" >/dev/null 2>&1; got=$?
   if [ "$got" = "$want" ]; then echo "ok   $d"; else echo "FAIL $d (exit $got, wanted $want)"; fail=1; fi
 }
-expect "unsupported macOS blocks"             1 sh "$dir/check-os.sh" "$t/old"
-expect "supported macOS passes"               0 sh "$dir/check-os.sh" "$t/ok"
-expect "brew without the check doesn't block" 0 sh "$dir/check-os.sh" "$t/unknown"
-expect "override lets an old macOS through"   0 env SETUP_ALLOW_OLD_OS=1 sh "$dir/check-os.sh" "$t/old"
+expect "unsupported macOS blocks"             1 sh "$dir/os-current.sh" "$t/old"
+expect "supported macOS passes"               0 sh "$dir/os-current.sh" "$t/ok"
+expect "brew without the check doesn't block" 0 sh "$dir/os-current.sh" "$t/unknown"
+expect "override lets an old macOS through"   0 env SETUP_ALLOW_OLD_OS=1 sh "$dir/os-current.sh" "$t/old"
 exit $fail

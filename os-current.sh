@@ -2,7 +2,7 @@
 # Stops the install on a macOS that Homebrew no longer supports. There are no
 # prebuilt bottles there, so every formula compiles from source (LLVM alone can
 # take hours). Asks Homebrew itself, so there's no version number to keep current.
-#   sh check-os.sh /opt/homebrew/bin/brew
+#   sh os-current.sh /opt/homebrew/bin/brew
 # Set SETUP_ALLOW_OLD_OS=1 to build from source anyway.
 set -e
 brew="${1:-brew}"

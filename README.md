@@ -56,4 +56,4 @@ SETUP_ALLOW_OLD_OS=1 ./install.sh
 curl -fsSL https://lawrence-berry.github.io/setup | SETUP_ALLOW_OLD_OS=1 sh
 ```
 
-`sh check-os-test.sh` tests it with fake `brew`s, so it passes on any macOS.
+`sh os-current-test.sh` tests it with fake `brew`s, so it passes on any macOS.
