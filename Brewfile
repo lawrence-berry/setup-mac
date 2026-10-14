@@ -29,7 +29,7 @@ cask "claude"
 cask "hamed-elfayome/claude-usage/claude-usage-tracker"   # from the app's own tap; not in homebrew-cask
 cask "cursor"
 cask "daisydisk"
-cask "docker"
+cask "docker-desktop"
 cask "github"                 # GitHub Desktop
 cask "google-chrome"
 cask "karabiner-elements"     # includes Karabiner-EventViewer
