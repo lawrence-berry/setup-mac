@@ -12,6 +12,7 @@ brew "nmap"
 brew "automake"
 brew "cloudflared"
 brew "coreutils"
+brew "dockutil"     # sets the Dock apps in macos-settings.sh
 brew "gettext"
 brew "go"
 brew "libtool"    # GNU build tool for C libraries (glibtool)
@@ -32,7 +33,8 @@ cask "daisydisk"
 cask "docker-desktop"
 cask "github"                 # GitHub Desktop
 cask "google-chrome"
-cask "karabiner-elements"     # includes Karabiner-EventViewer
+cask "iterm2"                 # terminal; the Claude Code SessionStart hook sets its badge
+cask "karabiner-elements"    # includes Karabiner-EventViewer
 cask "keka"                   # file archiver (zip, 7z, rar…)
 cask "libreoffice"
 cask "maccy"

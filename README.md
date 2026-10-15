@@ -20,6 +20,16 @@ See `Brewfile`, grouped into sections:
 
 Add your own under the right heading; each line is just `brew "name"` or `cask "name"`.
 
+## macOS settings
+
+```sh
+./macos-settings.sh
+```
+
+Applies system preferences with `defaults write`: dark mode and accent colour, tabs always in windows, the menu bar clock, screenshots to `~/Desktop/Screenshots`, the Dock (autohide, icon size, and its apps in order via `dockutil`, skipping any that aren't installed) and Finder. It then restarts the Dock, Finder and menu bar to apply them. It isn't run by `install.sh`, so run it yourself after the Brewfile has installed `dockutil` and the apps. Re-runnable; add new settings under the right heading.
+
+**It replaces the Dock's apps**: it removes everything currently in the Dock first, so edit the app list in the script, not the Dock, if you want a change to stick.
+
 ## Keeping it current
 
 ```sh
