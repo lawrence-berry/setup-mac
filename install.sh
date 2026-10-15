@@ -21,4 +21,6 @@ sh "$dir/os-current.sh" "$brew"
 "$brew" bundle --file="$dir/Brewfile" || echo "note: some Brewfile entries were skipped or failed above — see the summary"
 # Deluge has no working cask, so it has its own installer. Skip if present.
 [ -d /Applications/Deluge.app ] || "$dir/deluge.sh"
+# macOS preferences (needs dockutil from the Brewfile). Don't abort the install if it fails.
+sh "$dir/macos-settings.sh" || echo "note: macos-settings.sh failed — see above"
 echo "done"
