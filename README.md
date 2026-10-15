@@ -1,5 +1,7 @@
 # setup-mac
 
+<img src="public/icon.png" alt="" width="96">
+
 Homebrew bootstrap for a Mac: installs Homebrew if it's missing, then the tools in the `Brewfile`.
 
 ## Install
