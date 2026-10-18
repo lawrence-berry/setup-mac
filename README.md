@@ -10,7 +10,7 @@ Homebrew bootstrap for a Mac: installs Homebrew if it's missing, then the tools 
 ./install.sh
 ```
 
-Installs Homebrew, adds it to your `~/.zprofile` PATH (Apple Silicon or Intel), and runs `brew bundle`. Re-runnable — it skips what's already there.
+Installs Homebrew, adds it to your `~/.zprofile` PATH (Apple Silicon or Intel), runs `brew bundle`, then applies the [macOS settings](#macos-settings). Re-runnable — it skips what's already there.
 
 ## What it installs
 
@@ -28,7 +28,7 @@ Add your own under the right heading; each line is just `brew "name"` or `cask "
 ./macos-settings.sh
 ```
 
-Applies system preferences with `defaults write`: dark mode and accent colour, tabs always in windows, the menu bar clock, screenshots to `~/Desktop/Screenshots`, the Dock (autohide, icon size, and its apps in order via `dockutil`, skipping any that aren't installed) and Finder. It then restarts the Dock, Finder and menu bar to apply them. It isn't run by `install.sh`, so run it yourself after the Brewfile has installed `dockutil` and the apps. Re-runnable; add new settings under the right heading.
+Applies system preferences with `defaults write`: dark mode and accent colour, tabs always in windows, the menu bar clock, screenshots to `~/Desktop/Screenshots`, the Dock (autohide, icon size, and its apps in order via `dockutil`, skipping any that aren't installed) and Finder. It then restarts the Dock, Finder and menu bar to apply them. `install.sh` runs it after the Brewfile (which installs `dockutil` and the apps), and a failure there doesn't fail the install. Re-runnable on its own; add new settings under the right heading.
 
 **It replaces the Dock's apps**: it removes everything currently in the Dock first, so edit the app list in the script, not the Dock, if you want a change to stick.
 
