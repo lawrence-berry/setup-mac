@@ -45,5 +45,5 @@ jobs:
           export HOMEBREW_BUNDLE_MAS_SKIP=310633997  # WhatsApp: the App Store isn't signed in on a runner, and mas waits for it
           ./install.sh
           grep -q 'brew shellenv' ~/.zprofile
-          for t in git gh neovim htop nmap; do command -v "$t"; done
+          for t in git gh nvim htop nmap; do command -v "$t"; done
           defaults read NSGlobalDomain AppleInterfaceStyle | grep -qx Dark
