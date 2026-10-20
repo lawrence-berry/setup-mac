@@ -22,6 +22,20 @@ See `Brewfile`, grouped into sections:
 
 Add your own under the right heading; each line is just `brew "name"` or `cask "name"`.
 
+### Old macOS check
+
+Before installing anything, `install.sh` asks Homebrew (`brew doctor check_for_unsupported_macos`) whether this macOS is still supported. On an unsupported one there are no prebuilt bottles, so every formula compiles from source and a full install can take hours (LLVM alone, pulled in by `node` and `ripgrep`). The install stops with a message; update macOS and re-run.
+
+To build from source anyway:
+
+```sh
+SETUP_ALLOW_OLD_OS=1 ./install.sh
+# or, through the bootstrap:
+curl -fsSL https://lawrence-berry.github.io/setup | SETUP_ALLOW_OLD_OS=1 sh
+```
+
+`sh os-current-test.sh` tests it with fake `brew`s, so it passes on any macOS.
+
 ## macOS settings
 
 ```sh
@@ -55,17 +69,3 @@ Deluge's cask was disabled (its build fails Apple's Gatekeeper check), so it's n
 ```
 
 It fetches the build Homebrew pinned, verifies it against Homebrew's sha256, installs it, and clears the quarantine flag so it opens.
-
-### Old macOS check
-
-Before installing anything, `install.sh` asks Homebrew (`brew doctor check_for_unsupported_macos`) whether this macOS is still supported. On an unsupported one there are no prebuilt bottles, so every formula compiles from source and a full install can take hours (LLVM alone, pulled in by `node` and `ripgrep`). The install stops with a message; update macOS and re-run.
-
-To build from source anyway:
-
-```sh
-SETUP_ALLOW_OLD_OS=1 ./install.sh
-# or, through the bootstrap:
-curl -fsSL https://lawrence-berry.github.io/setup | SETUP_ALLOW_OLD_OS=1 sh
-```
-
-`sh os-current-test.sh` tests it with fake `brew`s, so it passes on any macOS.
