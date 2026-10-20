@@ -1,6 +1,8 @@
 #!/bin/sh
 # Applies macOS settings. Re-runnable; add new settings under the right heading.
 # Check a current value with: defaults read <domain> <key>
+# Replaces the Dock's apps: it removes everything in the Dock first, so edit the
+# app list below, not the Dock, if you want a change to stick.
 set -e
 
 # Appearance: dark mode, green accent, tinted-dark icons, Liquid Glass tint
