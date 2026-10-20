@@ -24,6 +24,7 @@ brew "sevenzip"
 brew "zzz"        # `zzz` puts the Mac to sleep
 
 # --- Apps (casks) ---
+# Deluge isn't here: its cask is disabled (Gatekeeper). install.sh runs deluge.sh instead.
 cask "1password"
 cask "brave-browser"
 cask "claude"

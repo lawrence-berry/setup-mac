@@ -1,0 +1,59 @@
+name: macOS
+
+on:
+  pull_request:
+    paths-ignore: [ "**.md" ]
+  push:
+    branches: [main]
+    paths-ignore: [ "**.md" ]
+
+permissions:
+  contents: read
+
+jobs:
+  changes:
+    name: Code changed?
+    runs-on: ubuntu-24.04
+    outputs:
+      code: ${{ steps.diff.outputs.code }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      # A PR-level paths-ignore only skips PRs that are Markdown-only from the start, so each push is checked here.
+      - id: diff
+        env:
+          BEFORE: ${{ github.event.before }}
+          HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          code=true
+          if [ -n "$BEFORE" ] && git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            git diff --name-only "$BEFORE" "$HEAD" | grep -qv '\.md$' || code=false
+          fi
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+
+  os-check:
+    name: Old-macOS check (macos-15)
+    needs: changes
+    if: needs.changes.outputs.code == 'true'
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v7
+      - run: sh os-current-test.sh
+
+  install:
+    name: Full install (macos-15)
+    needs: changes
+    if: needs.changes.outputs.code == 'true'
+    runs-on: macos-15
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - name: Run install.sh on the throwaway runner
+        run: |
+          export HOMEBREW_NO_AUTO_UPDATE=1
+          export HOMEBREW_BUNDLE_MAS_SKIP=310633997  # WhatsApp: the App Store isn't signed in on a runner, and mas waits for it
+          ./install.sh
+          grep -q 'brew shellenv' ~/.zprofile
+          for t in git gh nvim htop nmap; do command -v "$t"; done
+          defaults read NSGlobalDomain AppleInterfaceStyle | grep -qx Dark
