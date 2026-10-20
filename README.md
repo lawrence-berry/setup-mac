@@ -23,6 +23,7 @@ Homebrew bootstrap for a Mac: installs Homebrew if it's missing, then the tools 
 |---|---|---|
 | macOS | any release Homebrew still supports; the install stops on older ones | Checked by `os-current.sh` |
 | macOS | 27 (Apple Silicon) | Used daily |
+| macOS | 15 | Full install in CI |
 | Intel Macs | handled in the `PATH` setup | Not exercised in CI |
 | Shell | `/bin/sh` (POSIX) | ShellCheck in CI |
 
@@ -94,6 +95,6 @@ It fetches the build Homebrew pinned, verifies it against Homebrew's sha256, ins
 
 ## Tests
 
-CI lints every script with ShellCheck and runs `os-current-test.sh` (fake `brew`s) on Ubuntu and macOS. The full install changes the machine, so it is run by hand, not in CI.
+CI lints every script with ShellCheck and runs `os-current-test.sh` (fake `brew`s) on Ubuntu and macOS. It also runs the full `install.sh` on a throwaway macOS 15 runner and checks Homebrew's `PATH` line, the Core tools and the dark-mode setting.
 
 Part of the [`setup-*`](https://lawrence-berry.github.io/setup) family; on a blank machine, `curl -fsSL https://lawrence-berry.github.io/setup | sh` installs them all (setup-mac and setup-iterm on macOS only).

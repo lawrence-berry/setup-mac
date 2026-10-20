@@ -2,8 +2,10 @@ name: CI
 
 on:
   pull_request:
+    paths-ignore: [ "**.md" ]
   push:
     branches: [main]
+    paths-ignore: [ "**.md" ]
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -30,3 +32,17 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - run: sh os-current-test.sh
+
+  install:
+    name: Full install (macos-15)
+    runs-on: macos-15
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+      - name: Run install.sh on the throwaway runner
+        run: |
+          export HOMEBREW_NO_AUTO_UPDATE=1
+          ./install.sh
+          grep -q 'brew shellenv' ~/.zprofile
+          for t in git gh neovim htop nmap; do command -v "$t"; done
+          defaults read NSGlobalDomain AppleInterfaceStyle | grep -qx Dark
