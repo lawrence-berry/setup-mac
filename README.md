@@ -38,7 +38,17 @@ New entries go under the right heading; each line is just `brew "name"` or `cask
 
 ### Old macOS check
 
-Before installing anything, `install.sh` stops on a macOS Homebrew no longer supports (everything would compile from source). `SETUP_ALLOW_OLD_OS=1` overrides it; see the header of `os-current.sh`.
+Before installing anything, `install.sh` asks Homebrew (`brew doctor check_for_unsupported_macos`) whether the installed macOS is still supported. On an unsupported release Homebrew has no prebuilt bottles, so every formula compiles from source, and a full install can take multiple hours (LLVM alone, pulled in by `node` and `ripgrep`, accounts for much of that). The install stops with a message instead; updating macOS and re-running avoids the wait.
+
+To build from source anyway:
+
+```sh
+SETUP_ALLOW_OLD_OS=1 ./install.sh
+# or, through the bootstrap:
+curl -fsSL https://lawrence-berry.github.io/setup | SETUP_ALLOW_OLD_OS=1 sh
+```
+
+`sh os-current-test.sh` tests the check with fake `brew`s, so it passes on any macOS.
 
 ## macOS settings
 
@@ -54,7 +64,13 @@ Applies system preferences with `defaults write`: dark mode and accent colour, t
 ./refresh.sh
 ```
 
-Lists what is installed with Homebrew but missing from the `Brewfile`, as lines to paste under the right section. The file is never edited; how it works, and how to adopt apps installed from a `.dmg`, is in the header of `refresh.sh`.
+Lists what is installed with Homebrew but missing from the `Brewfile`, as lines to paste under the right section. The file is never edited; how it works is in the header of `refresh.sh`.
+
+Apps installed from a `.dmg` (not via Homebrew), such as a downloaded Chrome or VS Code, cannot be captured, because Homebrew does not know about them. Adopting them into Homebrew once makes them appear from then on:
+
+```sh
+brew install --cask --adopt google-chrome visual-studio-code
+```
 
 ## Tests
 
