@@ -1,4 +1,4 @@
-name: CI
+name: macOS
 
 on:
   pull_request:
@@ -8,27 +8,16 @@ on:
     paths-ignore: [ "**.md" ]
 
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
   contents: read
 
 jobs:
-  shellcheck:
-    name: ShellCheck
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: actions/checkout@v7
-      - run: shellcheck -S warning -e SC2148 *.sh
-
   os-check:
-    name: Old-macOS check (${{ matrix.os }})
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-24.04, macos-15]
+    name: Old-macOS check (macos-15)
+    runs-on: macos-15
     steps:
       - uses: actions/checkout@v7
       - run: sh os-current-test.sh

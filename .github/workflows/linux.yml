@@ -1,0 +1,30 @@
+name: Linux
+
+on:
+  pull_request:
+    paths-ignore: [ "**.md" ]
+  push:
+    branches: [main]
+    paths-ignore: [ "**.md" ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  shellcheck:
+    name: ShellCheck
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - run: shellcheck -S warning -e SC2148 *.sh
+
+  os-check:
+    name: Old-macOS check (ubuntu-24.04)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - run: sh os-current-test.sh

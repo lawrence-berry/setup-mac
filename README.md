@@ -12,20 +12,11 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/lawrence-berry/setup-mac/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/lawrence-berry/setup-mac/ci.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&label=CI" alt="CI status" /></a>
+  <a href="https://github.com/lawrence-berry/setup-mac/actions/workflows/macos.yml"><img src="https://img.shields.io/github/actions/workflow/status/lawrence-berry/setup-mac/macos.yml?branch=main&style=for-the-badge&logo=apple&logoColor=white&label=macOS%2015" alt="macOS 15 CI status" /></a>
+  <a href="https://github.com/lawrence-berry/setup-mac/actions/workflows/linux.yml"><img src="https://img.shields.io/github/actions/workflow/status/lawrence-berry/setup-mac/linux.yml?branch=main&style=for-the-badge&logo=ubuntu&logoColor=white&label=Ubuntu%2024.04" alt="Ubuntu 24.04 CI status" /></a>
 </p>
 
 Homebrew bootstrap for a Mac: installs Homebrew if it's missing, then the tools in the `Brewfile`.
-
-## Supported versions
-
-| Component | Version | Status |
-|---|---|---|
-| macOS | any release Homebrew still supports; the install stops on older ones | Checked by `os-current.sh` |
-| macOS | 27 (Apple Silicon) | Used daily |
-| macOS | 15 | Full install in CI |
-| Intel Macs | handled in the `PATH` setup | Not exercised in CI |
-| Shell | `/bin/sh` (POSIX) | ShellCheck in CI |
 
 ## Install
 
