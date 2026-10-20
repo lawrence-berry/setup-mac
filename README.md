@@ -24,7 +24,7 @@ Homebrew bootstrap for a Mac: installs Homebrew if it's missing, then the tools 
 ./install.sh
 ```
 
-Installs Homebrew, adds it to your `~/.zprofile` PATH (Apple Silicon or Intel), runs `brew bundle`, then applies the [macOS settings](#macos-settings). Re-runnable — it skips what's already there.
+Installs Homebrew, adds it to the `~/.zprofile` PATH (Apple Silicon or Intel), runs `brew bundle`, then applies the [macOS settings](#macos-settings). Re-runnable; anything already installed is skipped.
 
 ## What it installs
 
@@ -34,7 +34,7 @@ See `Brewfile`, grouped into sections:
 - **CLI tools** — other command-line formulae.
 - **Apps (casks)** — GUI apps.
 
-Add your own under the right heading; each line is just `brew "name"` or `cask "name"`.
+New entries go under the right heading; each line is just `brew "name"` or `cask "name"`.
 
 ### Old macOS check
 
@@ -54,7 +54,7 @@ Applies system preferences with `defaults write`: dark mode and accent colour, t
 ./refresh.sh
 ```
 
-Lists what you've installed with Homebrew that isn't in the `Brewfile` yet, as lines to paste under the right section. It never edits the file; how it works, and how to adopt apps installed from a `.dmg`, is in the header of `refresh.sh`.
+Lists what is installed with Homebrew but missing from the `Brewfile`, as lines to paste under the right section. The file is never edited; how it works, and how to adopt apps installed from a `.dmg`, is in the header of `refresh.sh`.
 
 ## Tests
 
