@@ -1,8 +1,30 @@
-# setup-mac
+<p align="center"><img src="public/icon.png" alt="setup-mac icon" width="128" height="128"></p>
 
-<p align="center"><img src="public/icon.png" alt="setup-mac icon" width="96" height="96"></p>
+<h1 align="center">setup-mac</h1>
+
+<p align="center"><b>Homebrew bootstrap, Brewfile and macOS preferences for a fresh Mac. One command, safe to re-run.</b></p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/macOS-Homebrew--supported-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS Homebrew-supported" />
+  <img src="https://img.shields.io/badge/Arch-Apple%20Silicon%20%C2%B7%20Intel-555555?style=for-the-badge&logo=apple&logoColor=white" alt="Arch Apple Silicon · Intel" />
+  <img src="https://img.shields.io/badge/Homebrew-Brewfile-FBB040?style=for-the-badge&logo=homebrew&logoColor=white" alt="Homebrew Brewfile" />
+  <img src="https://img.shields.io/badge/Shell-POSIX%20sh-4EAA25?style=for-the-badge&logo=gnubash&logoColor=white" alt="Shell POSIX sh" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/lawrence-berry/setup-mac/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/lawrence-berry/setup-mac/ci.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&label=CI" alt="CI status" /></a>
+</p>
 
 Homebrew bootstrap for a Mac: installs Homebrew if it's missing, then the tools in the `Brewfile`.
+
+## Supported versions
+
+| Component | Version | Status |
+|---|---|---|
+| macOS | any release Homebrew still supports; the install stops on older ones | Checked by `os-current.sh` |
+| macOS | 27 (Apple Silicon) | Used daily |
+| Intel Macs | handled in the `PATH` setup | Not exercised in CI |
+| Shell | `/bin/sh` (POSIX) | ShellCheck in CI |
 
 ## Install
 
@@ -69,3 +91,9 @@ Deluge's cask was disabled (its build fails Apple's Gatekeeper check), so it's n
 ```
 
 It fetches the build Homebrew pinned, verifies it against Homebrew's sha256, installs it, and clears the quarantine flag so it opens.
+
+## Tests
+
+CI lints every script with ShellCheck and runs `os-current-test.sh` (fake `brew`s) on Ubuntu and macOS. The full install changes the machine, so it is run by hand, not in CI.
+
+Part of the [`setup-*`](https://lawrence-berry.github.io/setup) family; on a blank machine, `curl -fsSL https://lawrence-berry.github.io/setup | sh` installs them all (setup-mac and setup-iterm on macOS only).
