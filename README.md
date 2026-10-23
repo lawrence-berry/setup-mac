@@ -56,7 +56,7 @@ curl -fsSL https://lawrence-berry.github.io/setup | SETUP_ALLOW_OLD_OS=1 sh
 ./macos-settings.sh
 ```
 
-Applies system preferences with `defaults write`: dark mode and accent colour, tabs always in windows, the menu bar clock, screenshots to `~/Desktop/Screenshots`, the Dock (autohide, icon size, and its apps in order via `dockutil`, skipping any that aren't installed) and Finder. It then restarts the Dock, Finder and menu bar to apply them. `install.sh` runs it after the Brewfile (which installs `dockutil` and the apps), and a failure there doesn't fail the install. Re-runnable on its own; add new settings under the right heading.
+Applies system preferences with `defaults write`: dark mode and accent colour, tabs always in windows, the menu bar clock, screenshots and screen recordings to `~/Desktop/Screenshots`, the Dock (autohide, icon size, and its apps in order via `dockutil`, skipping any that aren't installed) and Finder. It then restarts the Dock, Finder and menu bar to apply them. `install.sh` runs it after the Brewfile (which installs `dockutil` and the apps), and a failure there doesn't fail the install. Re-runnable on its own; add new settings under the right heading.
 
 ## Keeping it current
 

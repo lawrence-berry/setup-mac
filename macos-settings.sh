@@ -20,9 +20,12 @@ defaults write com.apple.menuextra.clock ShowDayOfWeek -bool true
 defaults write com.apple.menuextra.clock ShowAMPM -bool true
 defaults write com.apple.menuextra.clock ShowDate -int 0
 
-# Screenshots go to ~/Desktop/Screenshots
+# Screenshots and screen recordings go to ~/Desktop/Screenshots. The Screenshot app
+# keeps a folder per kind next to the plain `location`, so all three are set.
 mkdir -p ~/Desktop/Screenshots
 defaults write com.apple.screencapture location ~/Desktop/Screenshots
+defaults write com.apple.screencapture location-screenshot ~/Desktop/Screenshots
+defaults write com.apple.screencapture location-screenrecording ~/Desktop/Screenshots
 
 # Dock: autohide, 72pt icons, magnification, minimise into the app icon
 defaults write com.apple.dock autohide -bool true
