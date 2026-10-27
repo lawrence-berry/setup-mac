@@ -59,5 +59,16 @@ defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
 
+# Keyboard shortcuts (symbolic hotkeys: id, key code, modifier mask; 65535 = no character)
+hotkey() { defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add "$1" \
+  "<dict><key>enabled</key><true/><key>value</key><dict><key>type</key><string>standard</string><key>parameters</key><array><integer>$2</integer><integer>$3</integer><integer>$4</integer></array></dict></dict>"; }
+hotkey 60 32 49 262144       # previous input source: ctrl+space
+hotkey 61 32 49 786432       # next input source: ctrl+opt+space
+hotkey 79 65535 123 9961472  # move left a space: opt+cmd+left
+hotkey 80 65535 123 10092544 # move left a space, with the window: shift+opt+cmd+left
+hotkey 81 65535 124 9961472  # move right a space: opt+cmd+right
+hotkey 82 65535 124 10092544 # move right a space, with the window: shift+opt+cmd+right
+
 # Restart the processes that read the settings above
+/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u 2>/dev/null || true
 killall SystemUIServer Dock Finder
