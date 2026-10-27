@@ -57,3 +57,8 @@ jobs:
           grep -q 'brew shellenv' ~/.zprofile
           for t in git gh nvim htop nmap; do command -v "$t"; done
           defaults read NSGlobalDomain AppleInterfaceStyle | grep -qx Dark
+          # Shared Mac: a fake `id` makes the runner's Homebrew look owned by someone else.
+          fake="$(mktemp -d)"; printf '#!/bin/sh\necho 99999\n' > "$fake/id"; chmod +x "$fake/id"
+          PATH="$fake:$PATH" ./install.sh | tee shared.log
+          grep -q 'belongs to another user' shared.log
+          if grep -q 'Homebrew Bundle' shared.log; then echo 'brew bundle ran'; exit 1; fi
