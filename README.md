@@ -28,7 +28,7 @@ Installs Homebrew, adds it to the `~/.zprofile` PATH (Apple Silicon or Intel), r
 
 ### Second account on a shared Mac
 
-When Homebrew is already installed and owned by another user, the installer detects it by the owner of the `brew` binary. It then only adds Homebrew to the `~/.zprofile` PATH and applies the [macOS settings](#macos-settings), and installs nothing. The apps in `/Applications` and the Homebrew tools are shared; `brew install` stays with the owning account.
+When Homebrew is already installed and owned by another user, the installer detects it by the owner of the `brew` binary. It then adds Homebrew to the `~/.zprofile` PATH, applies the [macOS settings](#macos-settings) and runs `user-apps.sh`. That script installs iTerm into `~/Applications` and Claude Code into `~/.local/bin`, each only if missing, with no admin rights. Nothing else is installed: the apps in `/Applications` and the Homebrew tools are shared, and `brew install` stays with the owning account. The owning account's installs are never touched.
 
 ## What it installs
 
@@ -78,6 +78,6 @@ brew install --cask --adopt google-chrome visual-studio-code
 
 ## Tests
 
-CI lints every script with ShellCheck and runs `os-current-test.sh` (fake `brew`s) on Ubuntu and macOS. It also runs the full `install.sh` on a throwaway macOS 15 runner and checks Homebrew's `PATH` line, the Core tools and the dark-mode setting. It then re-runs `install.sh` with a fake `id`, so Homebrew looks owned by another user, and checks that only the PATH step and settings run.
+CI lints every script with ShellCheck and runs `os-current-test.sh` (fake `brew`s) on Ubuntu and macOS. It also runs the full `install.sh` on a throwaway macOS 15 runner and checks Homebrew's `PATH` line, the Core tools and the dark-mode setting. It then re-runs `install.sh` with a fake `id`, so Homebrew looks owned by another user, and checks that only the PATH step, the per-user apps and the settings run.
 
 Part of the [`setup-*`](https://lawrence-berry.github.io/setup) family; on a blank machine, `curl -fsSL https://lawrence-berry.github.io/setup | sh` installs them all (setup-mac and setup-iterm on macOS only).

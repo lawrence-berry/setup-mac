@@ -62,3 +62,5 @@ jobs:
           PATH="$fake:$PATH" ./install.sh | tee shared.log
           grep -q 'belongs to another user' shared.log
           if grep -q 'Homebrew Bundle' shared.log; then echo 'brew bundle ran'; exit 1; fi
+          test -x ~/.local/bin/claude
+          ls -d /Applications/iTerm.app ~/Applications/iTerm.app 2>/dev/null | grep -q iTerm

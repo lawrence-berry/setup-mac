@@ -1,6 +1,7 @@
 #!/bin/sh
 # Installs Homebrew (if missing) and everything in the Brewfile. Safe to re-run.
-# If another user already owns Homebrew, only adds it to PATH and applies the macOS settings.
+# If another user already owns Homebrew, adds it to PATH, installs iTerm and Claude Code in this home
+# (user-apps.sh) and applies the macOS settings.
 set -e
 dir="$(cd "$(dirname "$0")" && pwd)"
 
@@ -22,7 +23,8 @@ line="eval \"\$($brew shellenv)\""
 grep -qsF "$brew shellenv" "$HOME/.zprofile" || echo "$line" >> "$HOME/.zprofile"
 
 if [ -n "$shared" ]; then
-  echo "Homebrew belongs to another user: added to PATH, nothing installed."
+  echo "Homebrew belongs to another user: added to PATH, installing iTerm and Claude Code in this home only."
+  sh "$dir/user-apps.sh" || echo "note: user-apps.sh failed — see above"
   PATH="$(dirname "$brew"):$PATH" sh "$dir/macos-settings.sh" || echo "note: macos-settings.sh failed — see above"
   echo "done"
   exit 0
