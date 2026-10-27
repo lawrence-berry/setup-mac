@@ -20,6 +20,10 @@ defaults write com.apple.menuextra.clock ShowDayOfWeek -bool true
 defaults write com.apple.menuextra.clock ShowAMPM -bool true
 defaults write com.apple.menuextra.clock ShowDate -int 0
 
+# Menu bar stays visible (clock included) in full-screen apps
+defaults write NSGlobalDomain AppleMenuBarVisibleInFullscreen -bool true
+defaults write com.apple.controlcenter AutoHideMenuBarOption -int 3
+
 # Screenshots and screen recordings go to ~/Desktop/Screenshots. The Screenshot app
 # keeps a folder per kind next to the plain `location`, so all three are set.
 mkdir -p ~/Desktop/Screenshots
